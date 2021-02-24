@@ -39,6 +39,13 @@ module.exports = {
         path: './content/posts/'
       },
       __key: 'posts'
+    },
+    {
+      resolve: 'gatsby-plugin-graphql-codegen',
+      options: {
+        codegen: false, // XXX Only when needed
+        fileName: './src/types/graphql-types.ts'
+      }
     }
   ]
 }
