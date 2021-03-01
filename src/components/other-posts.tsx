@@ -22,7 +22,9 @@ export default function OtherPosts({ next, previous }: OtherPostsProps) {
             </Link>
           )}
         </li>
-        <li>
+        <li
+          className="text-right"
+        >
           {next && (
             <Link
               to={next.fields.slug}

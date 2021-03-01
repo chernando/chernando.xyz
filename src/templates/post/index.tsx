@@ -15,7 +15,9 @@ export default function Post({
 }: PostProps) {
   return (
     <Layout>
-      <article>
+      <article
+        className="container mx-auto p-4"
+      >
         <Header
           title={post.frontmatter.title}
           datePublished={post.frontmatter.datePublished}
@@ -23,7 +25,10 @@ export default function Post({
           image={post.frontmatter.image}
           timeToRead={post.timeToRead}
         />
-        <section dangerouslySetInnerHTML={{ __html: post.html }} />
+        <section
+          className="prose"
+          dangerouslySetInnerHTML={{ __html: post.html }}
+        />
         <Footer
           post={post}
           next={pageContext.next}

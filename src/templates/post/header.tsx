@@ -27,11 +27,16 @@ export default function Header({
 
   return (
     <header>
-      <h1>{title}</h1>
-      <p>
+      <h1 className="text-2xl md:text-3xl font-extrabold">
+        {title}
+      </h1>
+      <p
+        className="text-sm font-light"
+      >
         {date} - {timeToRead} minutos
       </p>
       <Img
+        className="rounded"
         fluid={imageFluid}
         alt={image.description}
         title={imageTitle}
