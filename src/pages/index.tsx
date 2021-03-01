@@ -17,10 +17,14 @@ export default function HomePage({ data }: HomePageProps) {
 
   return (
     <Layout>
-      <PagePreviewList
-        title="Blog"
-        previews={posts}
-      />
+      <div
+        className="container mx-auto p-4"
+      >
+        <PagePreviewList
+          title="Blog"
+          previews={posts}
+        />
+      </div>
     </Layout>
   )
 }
@@ -42,7 +46,7 @@ export const query = graphql`
               description
               contentUrl {
                 childImageSharp {
-                  fixed(width: 230, height: 129) {
+                  fixed(width: 320, height: 179) {
                     ...GatsbyImageSharpFixed_withWebp
                   }
                 }
