@@ -1,2 +1,5 @@
+export { default as Bio } from "./bio"
 export { default as Layout } from "./layout"
+export { default as OtherPosts } from "./other-posts"
 export { default as PagePreviewList } from "./page-preview-list"
+export { default as Tags } from "./tags"
