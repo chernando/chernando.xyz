@@ -1,0 +1,53 @@
+- title: "Microservicios: Cuándo y Cómo"
+  contentUrl: ./transparencias/microservicios-cuando-y-como.png
+  datePublished: 2019-05-10
+  description: Breve charla que expone los puntos fuertes y las complicaciones que traen las arquictecturas basadas en microservicios. Charla para el Club Tech de Google for Startups Madrid
+  id: d31b7fef74924fa9bb8e098690289dfc
+  slug: microservicios-cuando-y-como
+  type: speakerdeck
+  url: https://speakerdeck.com/chernando/microservicios-cuando-y-como
+
+- title: Introduciendo Serverless en Proyectos Python
+  contentUrl: ./transparencias/introduciendo-serverless-en-proyectos-python.png
+  datePublished: 2017-09-06
+  description: En esta charla citaremos las ventajas de Serverless y nos centraremos en las situaciones en las que podemos introducirlo dentro de nuestros proyectos Python. Utilizaremos AWS Lambda para los ejemplos para Python Madrid
+  id: 9684a936bb7f4173a72f382c7f5f47f2
+  slug: introduciendo-serverless-en-proyectos-python
+  type: speakerdeck
+  url: https://speakerdeck.com/chernando/introduciendo-serverless-en-proyectos-python
+
+- title: VIM Plugin Management
+  contentUrl: ./transparencias/vim-plugin-management.png
+  datePublished: 2014-10-14
+  description: Gestión de plugins dentro de VIM. Comparativa y uso de los gestores Pathogen and Vundle. Charla para el meetup de VIM Madrid
+  id: bcfad21035370132dd967e083072a8be
+  slug: vim-plugin-management
+  type: speakerdeck
+  url: https://speakerdeck.com/chernando/vim-plugin-management
+
+- title: Descubriendo AngularJS 1 Try It!
+  contentUrl: ./transparencias/try-angularjs.png
+  datePublished: 2014-03-19
+  description: Introducción AngularJS 1. Conceptos y puntos fuertes del framework desarrollando un proyecto de ejemplo. Charla para Try It! de la Universidad Politécnica de Madrid
+  id: 357ed4b091e10131dbce721b1895ee96
+  slug: try-angularjs
+  type: speakerdeck
+  url: https://speakerdeck.com/chernando/try-angularjs
+
+- title: The Hitchiker's Guide to the Web Development Try It!
+  contentUrl: ./transparencias/hhgttwd.png
+  datePublished: 2013-04-21
+  description: Conceptos generales que incluyen la mayoría de los framework de desarrollo de aplicaciones web. Charla para el Try It! de la Universidad Politécnica de Madrid
+  id: d420d3507471013057121231381a9964
+  slug: hhgttwd
+  type: speakerdeck
+  url: https://speakerdeck.com/chernando/hhgttwd
+
+- title: Trucos y consejos trabajando con Django
+  contentUrl: ./transparencias/django-tricks-2.png
+  datePublished: 2012-10-15
+  description: Curso de aplicaciones adicionales a tener en cuenta para un proyecto Django con django-crispy-forms, south, pruebas y selenium
+  id: 75eaf43011900130a40122000a8f8767
+  slug: django-tricks-2
+  type: speakerdeck
+  url: https://speakerdeck.com/chernando/django-tricks-2
