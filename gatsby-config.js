@@ -84,7 +84,17 @@ module.exports = {
     'gatsby-plugin-postcss',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-sitemap',
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.edges.map(edge => {
+            return {
+              url: `${site.siteMetadata.siteUrl}${edge.node.path}`,
+            }
+          }),
+      },
+    },
     'gatsby-plugin-offline',
     {
       resolve: 'gatsby-plugin-manifest',
