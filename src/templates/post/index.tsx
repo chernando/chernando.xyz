@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
 
-import { Layout } from "../../components"
+import { Layout, SEO } from "../../components"
 import { PostContext } from "../../types"
 import { PostBySlugQuery } from "../../types/graphql-types"
 import Header from "./header"
@@ -13,29 +13,40 @@ export default function Post({
   data: { markdownRemark: post },
   pageContext,
 }: PostProps) {
+  const fluidImage = post.frontmatter.image.contentUrl.childImageSharp.fluid
+
   return (
-    <Layout>
-      <article
-        className="container mx-auto p-4"
-      >
-        <Header
-          title={post.frontmatter.title}
-          datePublished={post.frontmatter.datePublished}
-          dateModified={post.frontmatter.dateModified}
-          image={post.frontmatter.image}
-          timeToRead={post.timeToRead}
-        />
-        <section
-          className="prose"
-          dangerouslySetInnerHTML={{ __html: post.html }}
-        />
-        <Footer
-          post={post}
-          next={pageContext.next}
-          previous={pageContext.previous}
-        />
-      </article>
-    </Layout>
+    <>
+      <SEO
+        pageInfo={post.frontmatter}
+        image={fluidImage.src}
+        kind="post"
+        slug={pageContext.slug}
+        excerpt={post.excerpt}
+      />
+      <Layout>
+        <article
+          className="container mx-auto p-4"
+        >
+          <Header
+            title={post.frontmatter.title}
+            datePublished={post.frontmatter.datePublished}
+            dateModified={post.frontmatter.dateModified}
+            image={post.frontmatter.image}
+            timeToRead={post.timeToRead}
+          />
+          <section
+            className="prose"
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+          <Footer
+            post={post}
+            next={pageContext.next}
+            previous={pageContext.previous}
+          />
+        </article>
+      </Layout>
+    </>
   )
 }
 

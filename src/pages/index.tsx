@@ -1,7 +1,7 @@
 import React from "react"
 import { PageProps, graphql } from "gatsby"
 
-import { Layout, PagePreviewList } from "../components"
+import { Layout, PagePreviewList, SEO } from "../components"
 import { HomePageQuery } from "../types/graphql-types"
 
 type HomePageProps = PageProps<HomePageQuery>
@@ -24,20 +24,23 @@ export default function HomePage({ data }: HomePageProps) {
   }))
 
   return (
-    <Layout>
-      <div
-        className="container mx-auto p-4"
-      >
-        <PagePreviewList
-          title="Blog"
-          previews={posts}
-        />
-        <PagePreviewList
-          title="Transparencias"
-          previews={slides}
-        />
-      </div>
-    </Layout>
+    <>
+      <SEO kind="website" />
+      <Layout>
+        <div
+          className="container mx-auto p-4"
+        >
+          <PagePreviewList
+            title="Blog"
+            previews={posts}
+          />
+          <PagePreviewList
+            title="Transparencias"
+            previews={slides}
+          />
+        </div>
+      </Layout>
+    </>
   )
 }
 

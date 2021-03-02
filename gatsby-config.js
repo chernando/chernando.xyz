@@ -1,9 +1,22 @@
 module.exports = {
   siteMetadata: {
     title: 'Problema, Solución, Herramienta',
+    description: `
+      Carlos Hernando, ingeniero de software por formación y emprendedor por el hado, se dedica a facilitar los cosas a los demás siempre con buen humor.
+      Este sitio web recopila sus aprendizajes, reflexiones e historias.
+    `,
     siteUrl: `https://chernando.xyz`,
+    image: `https://chernando.xyz/chernando.jpg`,
+    social: {
+      twitter: `@chernando`,
+    },
     author: {
       name: "Carlos Hernando",
+    },
+    organization: {
+      name: `Carlos Hernando`,
+      url: `https://chernando.xyz/`,
+      logo: `https://chernando.xyz/chernando.jpg`,
     },
   },
   plugins: [

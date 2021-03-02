@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
 
-import { Layout, PagePreviewList } from "../../components"
+import { Layout, PagePreviewList, SEO } from "../../components"
 import { PostsByTagQuery } from "../../types/graphql-types"
 import { TagContext } from "../../types"
 
@@ -18,16 +18,25 @@ export default function Tags({
   }))
 
   return (
-    <Layout>
-      <div
-        className="container mx-auto p-4"
-      >
-        <PagePreviewList
-          title={pageContext.tag}
-          previews={posts}
-        />
-      </div>
-    </Layout>
+    <>
+      <SEO
+        excerpt={`Artículos publicados con la etiqueta #${pageContext.tag}.`}
+        pageInfo={{
+          title: `#${pageContext.tag}`,
+        }}
+        slug={`/tags/${pageContext.tag}/`}
+      />
+      <Layout>
+        <div
+          className="container mx-auto p-4"
+        >
+          <PagePreviewList
+            title={pageContext.tag}
+            previews={posts}
+          />
+        </div>
+      </Layout>
+    </>
   )
 }
 
