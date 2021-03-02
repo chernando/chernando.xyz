@@ -11,11 +11,19 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value
     })
+  } else if (node.internal.type === `TransparenciasYaml`) {
+    const value = `/slides/${node.slug}/`
+    createNodeField({
+      name: `slug`,
+      node,
+      value,
+    })
   }
 }
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const postTemplate = path.resolve('./src/templates/post/index.tsx')
+  const slidesTemplate = path.resolve(`./src/templates/slides/index.tsx`)
 
   const result = await graphql(`
     query Posts {
@@ -29,6 +37,16 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
             }
             frontmatter {
               title
+            }
+          }
+        }
+      }
+      allTransparenciasYaml(sort: { fields: datePublished, order: DESC }) {
+        edges {
+          node {
+            id
+            fields {
+              slug
             }
           }
         }
@@ -55,6 +73,17 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         previous,
         next
       }
+    })
+  })
+
+  // Create slides pages
+  result.data.allTransparenciasYaml.edges.forEach(edge => {
+    createPage({
+      path: edge.node.fields.slug,
+      component: slidesTemplate,
+      context: {
+        id: edge.node.id,
+      },
     })
   })
 }

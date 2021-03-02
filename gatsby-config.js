@@ -33,6 +33,15 @@ module.exports = {
       __key: 'posts'
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `data`,
+        path: `./content/data/`,
+      },
+      __key: 'data'
+    },
+    `gatsby-transformer-yaml`,
+    {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [

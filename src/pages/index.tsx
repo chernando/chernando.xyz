@@ -15,6 +15,14 @@ export default function HomePage({ data }: HomePageProps) {
     imageDescription: edge.node.frontmatter.image.description,
   }))
 
+  const slides = data.allTransparenciasYaml.edges.map(edge => ({
+    title: edge.node.title,
+    slug: edge.node.fields.slug,
+    description: edge.node.description,
+    imageFixed: edge.node.contentUrl.childImageSharp.fixed,
+    imageDescription: `Portada de la charla ${edge.node.title}`,
+  }))
+
   return (
     <Layout>
       <div
@@ -23,6 +31,10 @@ export default function HomePage({ data }: HomePageProps) {
         <PagePreviewList
           title="Blog"
           previews={posts}
+        />
+        <PagePreviewList
+          title="Transparencias"
+          previews={slides}
         />
       </div>
     </Layout>
@@ -54,6 +66,24 @@ export const query = graphql`
             }
           }
           excerpt
+        }
+      }
+    }
+    allTransparenciasYaml(sort: { fields: datePublished, order: DESC }) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          description
+          title
+          contentUrl {
+            childImageSharp {
+              fixed(width: 320, height: 179) {
+                ...GatsbyImageSharpFixed_withWebp
+              }
+            }
+          }
         }
       }
     }
