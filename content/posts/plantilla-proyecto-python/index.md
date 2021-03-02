@@ -14,6 +14,9 @@ image:
 tags:
   - python
 
+redirect_from:
+  - /articulos/plantilla-proyecto-python/
+
 ---
 
 Siempre que aterrizo en un proyecto compruebo que hay un mínimo de estructura y las herramientas de desarrollo están configuradas. A veces mi vida no es sencilla...

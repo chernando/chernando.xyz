@@ -11,6 +11,9 @@ image:
 tags:
   - macos
 
+redirect_from:
+  - /articulos/homebrew-mac-os-x/
+
 ---
 
 [Homebrew](http://mxcl.github.com/homebrew/) es un sistema de gestión de

@@ -8,6 +8,9 @@ image:
   description: Shot in Cantão State Park in the state of Tocantins, Brazil
   isBasedOn: https://unsplash.com/photos/dQkXoqQLn40
 
+redirect_from:
+  - /articulos/tutorial-ant-buildxml/
+
 ---
 
 Uno de los inconvenientes en la construcción de software con más de dos

@@ -8,6 +8,9 @@ image:
   description: Sand in an hourglass
   isBasedOn: https://unsplash.com/photos/KYxXMTpTzek
 
+redirect_from:
+  - /articulos/ntp/
+
 ---
 
 Uno de los principios que debemos mantener en nuestros equipos es

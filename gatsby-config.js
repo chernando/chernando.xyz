@@ -162,6 +162,9 @@ module.exports = {
         codegen: false, // XXX Only when needed
         fileName: './src/types/graphql-types.ts'
       }
-    }
+    },
+    'gatsby-redirect-from',
+    'gatsby-plugin-meta-redirect',
+    'gatsby-plugin-netlify',
   ]
 }

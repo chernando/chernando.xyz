@@ -11,6 +11,9 @@ image:
 tags:
   - python
 
+redirect_from:
+  - /articulos/python-generators/
+
 ---
 
 Todos conocemos las listas de Python mientras que sus hermanos los

@@ -14,6 +14,9 @@ image:
   description: Compiling
   isBasedOn: https://unsplash.com/photos/T8LMIN09-mo
 
+redirect_from:
+  - /articulos/dotfiles/
+
 ---
 
 Uno de los placeres de ser desarrollador es tunear tus herramientas de trabajo. Horas y horas revisando documentación, artículos de trucos y oscuras referencias para conseguir ese comportamiento deseado. También está lo de picar código y ganar dinero. Pero eso es trabajo 😉

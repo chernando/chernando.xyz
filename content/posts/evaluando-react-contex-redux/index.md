@@ -12,6 +12,9 @@ image:
 tags:
   - react
 
+redirect_from:
+  - /articulos/evaluando-react-contex-redux/
+
 ---
 
 Desde la inclusión de los hooks en React existe el malentendido de que la combinación de los hooks useContext y useReducer sustituye a Redux. [No es cierto](https://blog.isquaredsoftware.com/2018/03/redux-not-dead-yet/).

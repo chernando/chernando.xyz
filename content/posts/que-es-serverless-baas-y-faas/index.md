@@ -15,6 +15,9 @@ tags:
   - principiante
   - serverless
 
+redirect_from:
+  - /articulos/que-es-serverless-baas-y-faas/
+
 ---
 
 En Agosto de 2006 Amazon anuncia su [beta de EC2](https://aws.amazon.com/es/blogs/aws/amazon_ec2_beta/) y pocos años después la **computación en la nube** se convierte en una pieza fundamental. En Noviembre de 2014 AWS [anuncia Lambda](https://www.youtube.com/watch?v=9eHoyUVo-yg) y en 2017 **Serverless** ya es la segunda [plataforma más querida por los desarrolladores](https://stackoverflow.com/insights/survey/2017#technology-most-loved-dreaded-and-wanted-platforms). ¿Pero qué es Serverless?

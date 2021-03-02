@@ -11,6 +11,9 @@ image:
   description: Print is Alive
   isBasedOn: https://unsplash.com/photos/Tzm3Oyu_6sk
 
+redirect_from:
+  - /articulos/integracion-continua/
+
 ---
 
 Cuando hablamos de integración continua acabamos discutiendo sobre Jenkins y cómo configurar sus plugins. Nos perdemos hablando las herramientas. La integración continua tiene que darnos la confianza de que nuestro software está preparado para entrar en producción. Si no tenemos esta sensación es que las herramientas no nos dejan ver el bosque.

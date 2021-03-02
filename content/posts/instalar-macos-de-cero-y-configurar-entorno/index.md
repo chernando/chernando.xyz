@@ -9,6 +9,9 @@ image:
 tags:
   - macos
 
+redirect_from:
+  - /articulos/instalar-macos-de-cero-y-configurar-entorno/
+
 ---
 
 Con cada actualización de macOS aprovecho para instalar desde cero. Con la práctica he (semi-)automatizado el proceso para tenerlo a punto en poco tiempo.

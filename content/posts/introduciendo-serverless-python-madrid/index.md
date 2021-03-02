@@ -14,6 +14,9 @@ tags:
   - python
   - serverless
 
+redirect_from:
+  - /articulos/introduciendo-serverless-python-madrid/
+
 ---
 
 El [meetup de Python Madrid](https://www.meetup.com/python-madrid/) me invitó a dar una charla sobre Python y cómo empezar a utilizar Serverless.

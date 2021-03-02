@@ -21,7 +21,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-exports.createPages = async ({ graphql, actions: { createPage } }) => {
+exports.createPages = async ({ graphql, actions: { createPage, createRedirect } }) => {
   const postTemplate = path.resolve('./src/templates/post/index.tsx')
   const slidesTemplate = path.resolve('./src/templates/slides/index.tsx')
   const tagsTemplate = path.resolve('./src/templates/tags/index.tsx')
@@ -105,6 +105,12 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         posts: postInTag[tag]
       }
     })
+    
+    createRedirect({
+      fromPath: `/etiquetas/${tag}/`,
+      toPath: `/tags/${tag}/`,
+      isPermanent: true,
+    })
   })
 
   // Create slides pages
@@ -115,6 +121,12 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       context: {
         id: edge.node.id
       }
+    })
+    
+    createRedirect({
+      fromPath: edge.node.fields.slug.replace('slides', 'transparencias'),
+      toPath: edge.node.fields.slug,
+      isPermanent: true,
     })
   })
 }

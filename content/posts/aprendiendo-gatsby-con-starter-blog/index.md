@@ -11,6 +11,9 @@ image:
 tags:
   - react
 
+redirect_from:
+  - /articulos/aprendiendo-gatsby-con-starter-blog/
+
 ---
 
 Llevo tiempo oyendo las ventajas de [Gatsby](https://www.gatsbyjs.org) como [generador de sitios web estáticos](https://www.staticgen.com) y como ejemplo de [Jamstack](https://jamstack.org). Así que una tarde me lancé con [el tutorial oficial](https://www.gatsbyjs.org/tutorial/). No me ayudó mucho 😇

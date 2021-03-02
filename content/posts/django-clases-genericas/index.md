@@ -11,6 +11,9 @@ image:
 tags:
   - python
 
+redirect_from:
+  - /articulos/django-clases-genericas/
+
 ---
 
 Django es un framework para desarrollo web muy potente y muy bien
