@@ -11,20 +11,20 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value
     })
-  } else if (node.internal.type === `TransparenciasYaml`) {
+  } else if (node.internal.type === 'TransparenciasYaml') {
     const value = `/slides/${node.slug}/`
     createNodeField({
-      name: `slug`,
+      name: 'slug',
       node,
-      value,
+      value
     })
   }
 }
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const postTemplate = path.resolve('./src/templates/post/index.tsx')
-  const slidesTemplate = path.resolve(`./src/templates/slides/index.tsx`)
-  const tagsTemplate = path.resolve(`./src/templates/tags/index.tsx`)
+  const slidesTemplate = path.resolve('./src/templates/slides/index.tsx')
+  const tagsTemplate = path.resolve('./src/templates/tags/index.tsx')
 
   const result = await graphql(`
     query Posts {
@@ -102,8 +102,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       component: tagsTemplate,
       context: {
         tag,
-        posts: postInTag[tag],
-      },
+        posts: postInTag[tag]
+      }
     })
   })
 
@@ -113,8 +113,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       path: edge.node.fields.slug,
       component: slidesTemplate,
       context: {
-        id: edge.node.id,
-      },
+        id: edge.node.id
+      }
     })
   })
 }

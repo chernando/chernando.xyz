@@ -5,19 +5,19 @@ module.exports = {
       Carlos Hernando, ingeniero de software por formación y emprendedor por el hado, se dedica a facilitar los cosas a los demás siempre con buen humor.
       Este sitio web recopila sus aprendizajes, reflexiones e historias.
     `,
-    siteUrl: `https://chernando.xyz`,
-    image: `https://chernando.xyz/chernando.jpg`,
+    siteUrl: 'https://chernando.xyz',
+    image: 'https://chernando.xyz/chernando.jpg',
     social: {
-      twitter: `@chernando`,
+      twitter: '@chernando'
     },
     author: {
-      name: "Carlos Hernando",
+      name: 'Carlos Hernando'
     },
     organization: {
-      name: `Carlos Hernando`,
-      url: `https://chernando.xyz/`,
-      logo: `https://chernando.xyz/chernando.jpg`,
-    },
+      name: 'Carlos Hernando',
+      url: 'https://chernando.xyz/',
+      logo: 'https://chernando.xyz/chernando.jpg'
+    }
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -46,14 +46,14 @@ module.exports = {
       __key: 'posts'
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `data`,
-        path: `./content/data/`,
+        name: 'data',
+        path: './content/data/'
       },
       __key: 'data'
     },
-    `gatsby-transformer-yaml`,
+    'gatsby-transformer-yaml',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -85,23 +85,23 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: `gatsby-plugin-sitemap`,
+      resolve: 'gatsby-plugin-sitemap',
       options: {
         serialize: ({ site, allSitePage }) =>
           allSitePage.edges.map(edge => {
             return {
-              url: `${site.siteMetadata.siteUrl}${edge.node.path}`,
+              url: `${site.siteMetadata.siteUrl}${edge.node.path}`
             }
-          }),
-      },
+          })
+      }
     },
     {
-      resolve: `gatsby-plugin-feed`,
+      resolve: 'gatsby-plugin-feed',
       options: {
         feeds: [
           {
-            title: `Problema, Solución, Herramienta`,
-            output: "/rss.xml",
+            title: 'Problema, Solución, Herramienta',
+            output: '/rss.xml',
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
                 const post = edge.node
@@ -114,7 +114,7 @@ module.exports = {
                     guid: site.siteMetadata.siteUrl + post.fields.slug,
                     url: site.siteMetadata.siteUrl + post.fields.slug,
                     date: post.frontmatter.datePublished,
-                    custom_elements: [{ "content:encoded": post.html }],
+                    custom_elements: [{ 'content:encoded': post.html }]
                   }
                 )
               })
@@ -144,10 +144,10 @@ module.exports = {
                   }
                 }
               }
-            `,
-          },
-        ],
-      },
+            `
+          }
+        ]
+      }
     },
     'gatsby-plugin-offline',
     {
