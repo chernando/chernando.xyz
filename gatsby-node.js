@@ -24,6 +24,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const postTemplate = path.resolve('./src/templates/post/index.tsx')
   const slidesTemplate = path.resolve(`./src/templates/slides/index.tsx`)
+  const tagsTemplate = path.resolve(`./src/templates/tags/index.tsx`)
 
   const result = await graphql(`
     query Posts {
@@ -37,6 +38,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
             }
             frontmatter {
               title
+              tags
             }
           }
         }
@@ -73,6 +75,35 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         previous,
         next
       }
+    })
+  })
+
+  // Create tags pages
+  const tags = new Set()
+  const postInTag = {}
+
+  posts.forEach(post => {
+    if (post.node.frontmatter.tags) {
+      post.node.frontmatter.tags.forEach(tag => {
+        tags.add(tag)
+
+        if (postInTag[tag]) {
+          postInTag[tag].push(post.node.fields.slug)
+        } else {
+          postInTag[tag] = [post.node.fields.slug]
+        }
+      })
+    }
+  })
+
+  tags.forEach(tag => {
+    createPage({
+      path: `/tags/${tag}/`,
+      component: tagsTemplate,
+      context: {
+        tag,
+        posts: postInTag[tag],
+      },
     })
   })
 

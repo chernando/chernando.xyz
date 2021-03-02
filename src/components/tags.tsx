@@ -19,7 +19,7 @@ function renderTag(tag: string, index: number) {
   return (
     <li
       key={index}
-      className="rounded px-4 py-2 bg-green-400 font-bold"
+      className="rounded px-4 py-2 mr-4 bg-green-400 font-bold"
     >
       <Link to={`/tags/${tag}/`}>#{tag}</Link>
     </li>

@@ -28,3 +28,8 @@ export interface PostContext {
   next?: Post
   previous?: Post
 }
+
+export interface TagContext {
+  tag: string,
+  posts: Post[],
+}
