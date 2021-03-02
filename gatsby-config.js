@@ -63,6 +63,7 @@ module.exports = {
             options: {
               prompt: {
                 user: 'u',
+                host: 'l',
                 global: true
               }
             }
