@@ -1,6 +1,5 @@
 import React from "react"
-import { graphql, useStaticQuery } from "gatsby"
-import Image from "gatsby-image"
+import { StaticImage } from "gatsby-plugin-image";
 import {
   FaGithub,
   FaLinkedin,
@@ -8,29 +7,16 @@ import {
 } from "react-icons/fa"
 
 export default function Bio() {
-  const {
-    file: avatar,
-  } = useStaticQuery(graphql`
-    query BioQuery {
-      file(relativePath: { eq: "chernando.jpg" }) {
-        childImageSharp {
-          fixed(width: 100, height: 100) {
-            ...GatsbyImageSharpFixed_withWebp
-          }
-        }
-      }
-    }
-  `)
-
   return (
     <div
       className="rounded shadow p-4 my-4"
     >
-      <Image
+      <StaticImage
+        src="../../static/chernando.jpg"
+        height={100}
+        width={100}
         className="rounded-full border float-left mr-2"
-        fixed={avatar.childImageSharp.fixed}
-        alt="Carlos Hernando"
-      />
+        alt="Carlos Hernando" />
       <p
         className="font-semibold"
       >
@@ -63,5 +49,5 @@ export default function Bio() {
         </li>
       </ul>
     </div>
-  )
+  );
 }

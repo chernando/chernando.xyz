@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { Preview } from "../types"
 
@@ -9,11 +9,10 @@ export default function PageProview({ preview }: { preview: Preview }) {
     <div
       className="mb-8 flex-none sm:flex sm:flex-row md:flex-none md:flex-col"
     >
-      <Img
+      <GatsbyImage
+        image={preview.image}
         className="rounded w-min sm:flex-none"
-        fixed={preview.imageFixed}
-        alt={preview.imageDescription}
-      />
+        alt={preview.imageDescription} />
       <div
         className="flex-grow pl-0 sm:pl-4 md:pl-0"
       >
@@ -25,5 +24,5 @@ export default function PageProview({ preview }: { preview: Preview }) {
         <p>{preview.description}</p>
       </div>
     </div>
-  )
+  );
 }

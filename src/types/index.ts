@@ -1,4 +1,4 @@
-import { FixedObject, FluidObject } from "gatsby-image"
+import { IGatsbyImageData } from "gatsby-plugin-image";
 
 import { PostBySlugQuery } from "./graphql-types"
 
@@ -6,14 +6,14 @@ export interface Preview {
   slug: string
   title: string
   description: string
-  imageFixed: FixedObject
+  image: IGatsbyImageData
   imageDescription: string
 }
 
 export interface PageImage {
   contentUrl?: {
     childImageSharp?: {
-      fluid?: FluidObject
+      gatsbyImageData?: IGatsbyImageData
     }
   }
   author?: string

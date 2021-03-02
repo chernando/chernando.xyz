@@ -1,6 +1,6 @@
 import React from "react"
 import { format, parseISO } from "date-fns"
-import Img from "gatsby-image"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 import { PageImage } from "../../types"
 
@@ -20,7 +20,7 @@ export default function Header({
   timeToRead,
 }: HeaderProps) {
   const date = format(parseISO(dateModified ?? datePublished), "yyyy-MM-dd")
-  const imageFluid = image.contentUrl.childImageSharp.fluid
+  const imageFluid = image.contentUrl.childImageSharp.gatsbyImageData
   const imageTitle = image.author
     ? `${image.author} on ${image.isBasedOn}`
     : undefined
@@ -38,13 +38,12 @@ export default function Header({
       <div
         className="rounded max-w-prose my-4"
       >
-        <Img
+        <GatsbyImage
+          image={imageFluid}
           className="rounded"
-          fluid={imageFluid}
           alt={image.description}
-          title={imageTitle}
-        />
+          title={imageTitle} />
       </div>
     </header>
-  )
+  );
 }

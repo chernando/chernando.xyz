@@ -11,7 +11,7 @@ export default function HomePage({ data }: HomePageProps) {
     slug: edge.node.fields.slug,
     title: edge.node.frontmatter.title,
     description: edge.node.frontmatter.description ?? edge.node.excerpt,
-    imageFixed: edge.node.frontmatter.image?.contentUrl?.childImageSharp?.fixed,
+    image: edge.node.frontmatter.image?.contentUrl?.childImageSharp?.gatsbyImageData,
     imageDescription: edge.node.frontmatter.image.description,
   }))
 
@@ -19,7 +19,7 @@ export default function HomePage({ data }: HomePageProps) {
     title: edge.node.title,
     slug: edge.node.fields.slug,
     description: edge.node.description,
-    imageFixed: edge.node.contentUrl.childImageSharp.fixed,
+    image: edge.node.contentUrl.childImageSharp.gatsbyImageData,
     imageDescription: `Portada de la charla ${edge.node.title}`,
   }))
 
@@ -47,7 +47,7 @@ export default function HomePage({ data }: HomePageProps) {
 export const query = graphql`
   query HomePage {
     allMarkdownRemark(
-      sort: { order: DESC, fields: frontmatter___datePublished }
+      sort: {order: DESC, fields: frontmatter___datePublished}
     ) {
       edges {
         node {
@@ -61,9 +61,7 @@ export const query = graphql`
               description
               contentUrl {
                 childImageSharp {
-                  fixed(width: 320, height: 179) {
-                    ...GatsbyImageSharpFixed_withWebp
-                  }
+                  gatsbyImageData(width: 320, height: 179, layout: FIXED)
                 }
               }
             }
@@ -72,7 +70,9 @@ export const query = graphql`
         }
       }
     }
-    allTransparenciasYaml(sort: { fields: datePublished, order: DESC }) {
+    allTransparenciasYaml(
+      sort: {fields: datePublished, order: DESC}
+    ) {
       edges {
         node {
           fields {
@@ -82,9 +82,7 @@ export const query = graphql`
           title
           contentUrl {
             childImageSharp {
-              fixed(width: 320, height: 179) {
-                ...GatsbyImageSharpFixed_withWebp
-              }
+              gatsbyImageData(width: 320, height: 179, layout: FIXED)
             }
           }
         }

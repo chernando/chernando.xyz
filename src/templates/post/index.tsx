@@ -13,13 +13,14 @@ export default function Post({
   data: { markdownRemark: post },
   pageContext,
 }: PostProps) {
-  const fluidImage = post.frontmatter.image.contentUrl.childImageSharp.fluid
+  const images = post.frontmatter.image.contentUrl.childImageSharp.gatsbyImageData.images.sources[0].srcSet.split('\n')
+  const image = images[images.length - 1].split(' ')[0]
 
   return (
     <>
       <SEO
         pageInfo={post.frontmatter}
-        image={fluidImage.src}
+        image={image}
         kind="post"
         slug={pageContext.slug}
         excerpt={post.excerpt}
@@ -61,7 +62,7 @@ export default function Post({
 
 export const query = graphql`
   query PostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(fields: {slug: {eq: $slug}}) {
       fields {
         slug
       }
@@ -74,10 +75,7 @@ export const query = graphql`
         image {
           contentUrl {
             childImageSharp {
-              fluid(maxWidth: 700) {
-                ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                ...GatsbyImageSharpFluidLimitPresentationSize
-              }
+              gatsbyImageData(width: 700, placeholder: TRACED_SVG, layout: CONSTRAINED)
             }
           }
           author

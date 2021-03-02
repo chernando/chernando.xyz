@@ -1,3 +1,4 @@
+import { IGatsbyImageData } from "gatsby-plugin-image"
 export type Maybe<T> = T | null;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
@@ -4437,12 +4438,12 @@ export type HomePageQuery = { allMarkdownRemark: { edges: Array<{ node: (
           Pick<MarkdownRemarkFrontmatter, 'title' | 'description'>
           & { image?: Maybe<(
             Pick<MarkdownRemarkFrontmatterImage, 'description'>
-            & { contentUrl?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixed_WithWebpFragment> }> }> }
+            & { contentUrl?: Maybe<{ childImageSharp?: Maybe<{ gatsbyImageData?: Maybe<IGatsbyImageData> }> }> }
           )> }
         )> }
       ) }> }, allTransparenciasYaml: { edges: Array<{ node: (
         Pick<TransparenciasYaml, 'description' | 'title'>
-        & { fields?: Maybe<Pick<TransparenciasYamlFields, 'slug'>>, contentUrl?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixed_WithWebpFragment> }> }> }
+        & { fields?: Maybe<Pick<TransparenciasYamlFields, 'slug'>>, contentUrl?: Maybe<{ childImageSharp?: Maybe<{ gatsbyImageData?: Maybe<IGatsbyImageData> }> }> }
       ) }> } };
 
 export type PostBySlugQueryVariables = Exact<{
@@ -4456,10 +4457,7 @@ export type PostBySlugQuery = { markdownRemark?: Maybe<(
       Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'datePublished' | 'dateModified' | 'tags'>
       & { image?: Maybe<(
         Pick<MarkdownRemarkFrontmatterImage, 'author' | 'description' | 'isBasedOn'>
-        & { contentUrl?: Maybe<{ childImageSharp?: Maybe<{ fluid?: Maybe<(
-              GatsbyImageSharpFluid_WithWebp_TracedSvgFragment
-              & GatsbyImageSharpFluidLimitPresentationSizeFragment
-            )> }> }> }
+        & { contentUrl?: Maybe<{ childImageSharp?: Maybe<{ gatsbyImageData?: Maybe<IGatsbyImageData> }> }> }
       )> }
     )> }
   )> };
@@ -4485,7 +4483,7 @@ export type PostsByTagQuery = { allMarkdownRemark: { edges: Array<{ node: (
           Pick<MarkdownRemarkFrontmatter, 'title' | 'description'>
           & { image?: Maybe<(
             Pick<MarkdownRemarkFrontmatterImage, 'author' | 'description' | 'isBasedOn'>
-            & { contentUrl?: Maybe<{ childImageSharp?: Maybe<{ fixed?: Maybe<GatsbyImageSharpFixed_WithWebpFragment> }> }> }
+            & { contentUrl?: Maybe<{ childImageSharp?: Maybe<{ gatsbyImageData?: Maybe<IGatsbyImageData> }> }> }
           )> }
         )>, fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>> }
       ) }> } };

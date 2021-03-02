@@ -13,7 +13,7 @@ export default function Tags({
     slug: edge.node.fields.slug,
     title: edge.node.frontmatter.title,
     description: edge.node.frontmatter.description ?? edge.node.excerpt,
-    imageFixed: edge.node.frontmatter.image?.contentUrl?.childImageSharp?.fixed,
+    imageFixed: edge.node.frontmatter.image?.contentUrl?.childImageSharp?.gatsbyImageData,
     imageDescription: edge.node.frontmatter.image.description,
   }))
 
@@ -43,8 +43,8 @@ export default function Tags({
 export const query = graphql`
   query PostsByTag($posts: [String]!) {
     allMarkdownRemark(
-      filter: { fields: { slug: { in: $posts } } }
-      sort: { order: DESC, fields: frontmatter___datePublished }
+    filter: {fields: {slug: {in: $posts}}}
+    sort: {order: DESC, fields: frontmatter___datePublished}
     ) {
       edges {
         node {
@@ -54,9 +54,7 @@ export const query = graphql`
             image {
               contentUrl {
                 childImageSharp {
-                  fixed(width: 320, height: 179) {
-                    ...GatsbyImageSharpFixed_withWebp
-                  }
+                  gatsbyImageData(width: 320, height: 179, layout: FIXED)
                 }
               }
               author
