@@ -35,12 +35,16 @@ export default function Header({
       >
         {date} - {timeToRead} minutos
       </p>
-      <Img
-        className="rounded"
-        fluid={imageFluid}
-        alt={image.description}
-        title={imageTitle}
-      />
+      <div
+        className="rounded max-w-prose my-4"
+      >
+        <Img
+          className="rounded"
+          fluid={imageFluid}
+          alt={image.description}
+          title={imageTitle}
+        />
+      </div>
     </header>
   )
 }

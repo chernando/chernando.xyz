@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
 
-import { Layout, SEO } from "../../components"
+import { Bio, Layout, SEO } from "../../components"
 import { PostContext } from "../../types"
 import { PostBySlugQuery } from "../../types/graphql-types"
 import Header from "./header"
@@ -35,10 +35,19 @@ export default function Post({
             image={post.frontmatter.image}
             timeToRead={post.timeToRead}
           />
-          <section
-            className="prose"
-            dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          <div
+            className="lg:flex lg:justify-space-between"
+          >
+            <main
+              className="prose"
+              dangerouslySetInnerHTML={{ __html: post.html }}
+            />
+            <aside
+              className="max-w-prose lg:flex-grow lg:max-h-screen lg:-mt-4 lg:pl-4 lg:sticky lg:top-0"
+            >
+              <Bio />
+            </aside>
+          </div>
           <Footer
             post={post}
             next={pageContext.next}

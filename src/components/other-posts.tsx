@@ -10,7 +10,9 @@ interface OtherPostsProps {
 
 export default function OtherPosts({ next, previous }: OtherPostsProps) {
   return (
-    <nav>
+    <nav
+      className="mt-4"
+    >
       <ul>
         <li>
           {previous && (
