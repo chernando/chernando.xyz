@@ -166,5 +166,6 @@ module.exports = {
     'gatsby-redirect-from',
     'gatsby-plugin-meta-redirect',
     'gatsby-plugin-netlify',
+    'gatsby-plugin-preact'
   ]
 }
