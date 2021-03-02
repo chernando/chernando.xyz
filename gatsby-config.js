@@ -1,6 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: 'Problema, Solución, Herramienta'
+    title: 'Problema, Solución, Herramienta',
+    siteUrl: `https://chernando.xyz`,
+    author: {
+      name: "Carlos Hernando",
+    },
   },
   plugins: [
     'gatsby-plugin-react-helmet',
