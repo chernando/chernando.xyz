@@ -61,7 +61,7 @@ export const query = graphql`
               description
               contentUrl {
                 childImageSharp {
-                  gatsbyImageData(width: 320, height: 179, layout: FIXED)
+                  gatsbyImageData(placeholder: TRACED_SVG)
                 }
               }
             }
@@ -82,7 +82,7 @@ export const query = graphql`
           title
           contentUrl {
             childImageSharp {
-              gatsbyImageData(width: 320, height: 179, layout: FIXED)
+              gatsbyImageData(placeholder: TRACED_SVG)
             }
           }
         }

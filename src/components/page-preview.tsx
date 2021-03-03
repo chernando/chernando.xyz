@@ -9,10 +9,14 @@ export default function PageProview({ preview }: { preview: Preview }) {
     <div
       className="mb-8 flex-none sm:flex sm:flex-row md:flex-none md:flex-col"
     >
-      <GatsbyImage
-        image={preview.image}
-        className="rounded w-min sm:flex-none"
-        alt={preview.imageDescription} />
+      <Link
+        className="rounded sm:flex-none sm:w-2/4 md:w-auto"
+        to={preview.slug}
+      >
+        <GatsbyImage
+          image={preview.image}
+          alt={preview.imageDescription} />
+      </Link>
       <div
         className="flex-grow pl-0 sm:pl-4 md:pl-0"
       >

@@ -1,5 +1,6 @@
 import React from "react"
 import { graphql, PageProps } from "gatsby"
+import { getSrc } from "gatsby-plugin-image"
 
 import { Bio, Layout, SEO } from "../../components"
 import { PostContext } from "../../types"
@@ -13,8 +14,7 @@ export default function Post({
   data: { markdownRemark: post },
   pageContext,
 }: PostProps) {
-  const images = post.frontmatter.image.contentUrl.childImageSharp.gatsbyImageData.images.sources[0].srcSet.split('\n')
-  const image = images[images.length - 1].split(' ')[0]
+  const image = getSrc(post.frontmatter.image.contentUrl.childImageSharp.gatsbyImageData)
 
   return (
     <>

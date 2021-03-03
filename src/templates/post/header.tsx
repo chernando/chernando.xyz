@@ -35,15 +35,11 @@ export default function Header({
       >
         {date} - {timeToRead} minutos
       </p>
-      <div
+      <GatsbyImage
+        image={imageFluid}
         className="rounded max-w-prose my-4"
-      >
-        <GatsbyImage
-          image={imageFluid}
-          className="rounded"
-          alt={image.description}
-          title={imageTitle} />
-      </div>
+        alt={image.description}
+        title={imageTitle} />
     </header>
   );
 }

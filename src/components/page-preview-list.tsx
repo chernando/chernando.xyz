@@ -11,7 +11,7 @@ export default function PagePreviewList({ title, previews }: { title: string, pr
         id={title.toLowerCase()}
       >{title}</h2>
       <div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4"
       >
         {previews.map((preview) => (
           <PagePreview preview={preview} />
