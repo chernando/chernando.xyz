@@ -4452,7 +4452,7 @@ export type PostBySlugQueryVariables = Exact<{
 
 
 export type PostBySlugQuery = { markdownRemark?: Maybe<(
-    Pick<MarkdownRemark, 'excerpt' | 'timeToRead' | 'html'>
+    Pick<MarkdownRemark, 'excerpt' | 'timeToRead' | 'tableOfContents' | 'html'>
     & { fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter?: Maybe<(
       Pick<MarkdownRemarkFrontmatter, 'title' | 'description' | 'datePublished' | 'dateModified' | 'tags'>
       & { image?: Maybe<(

@@ -59,6 +59,12 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              icon: false
+            }
+          },
+          {
             resolve: 'gatsby-remark-prismjs',
             options: {
               prompt: {

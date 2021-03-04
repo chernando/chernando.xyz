@@ -39,12 +39,21 @@ export default function Post({
           <div
             className="lg:flex lg:justify-space-between"
           >
-            <main
-              className="prose"
-              dangerouslySetInnerHTML={{ __html: post.html }}
-            />
+            <div className="lg:min-w-max">
+              <nav
+                role="navigation"
+                aria-label="Tabla de Contenidos"
+                id="tableOfContents"
+                className="prose prose-sm border-l-8 border-green-600 pl-4 mb-4"
+                dangerouslySetInnerHTML={{ __html: post.tableOfContents }}
+              />
+              <main
+                className="prose"
+                dangerouslySetInnerHTML={{ __html: post.html }}
+              />
+            </div>
             <aside
-              className="max-w-prose lg:flex-grow lg:max-h-screen lg:-mt-4 lg:pl-4 lg:sticky lg:top-0"
+              className="max-w-prose lg:flex-grow lg:max-h-screen lg:-mt-3 lg:pl-4 lg:sticky lg:top-0"
             >
               <Bio />
             </aside>
@@ -86,6 +95,9 @@ export const query = graphql`
       excerpt
       timeToRead
       html
+      tableOfContents(
+        maxDepth: 3
+      )
     }
   }
 `
