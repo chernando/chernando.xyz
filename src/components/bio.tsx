@@ -15,6 +15,8 @@ export default function Bio() {
         src="../../static/chernando.jpg"
         height={100}
         width={100}
+        layout="fixed"
+        quality={80}
         className="rounded-full border float-left mr-2"
         alt="Carlos Hernando" />
       <p
