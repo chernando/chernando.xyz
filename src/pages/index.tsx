@@ -1,7 +1,7 @@
 import React from "react"
 import { PageProps, graphql } from "gatsby"
 
-import { Layout, PagePreviewList, SEO } from "../components"
+import { Hero, Layout, PagePreviewList, SEO } from "../components"
 import { HomePageQuery } from "../types/graphql-types"
 
 type HomePageProps = PageProps<HomePageQuery>
@@ -30,6 +30,7 @@ export default function HomePage({ data }: HomePageProps) {
         <div
           className="container mx-auto p-4"
         >
+          <Hero />
           <PagePreviewList
             title="Blog"
             previews={posts}
