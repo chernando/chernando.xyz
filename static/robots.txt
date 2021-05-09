@@ -1,4 +1,4 @@
 User-Agent: *
 Allow: /
 
-Sitemap: https://chernando.xyz/sitemap.xml
+Sitemap: https://chernando.xyz/sitemap/sitemap-index.xml
