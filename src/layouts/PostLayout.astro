@@ -97,7 +97,7 @@ const calculatedReadingTime = readingTime || Math.ceil(post.body.split(' ').leng
           <ul>
             {tags.map((tag) => (
               <li>
-                <a href={`/${language}/${language === 'es' ? 'etiquetas' : 'tags'}/${tag}`} itemprop="keywords">#{tag}</a>
+                <a href={language === 'es' ? `/etiquetas/${tag}` : `/en/tags/${tag}`} itemprop="keywords">#{tag}</a>
               </li>
             ))}
           </ul>
@@ -141,6 +141,6 @@ const calculatedReadingTime = readingTime || Math.ceil(post.body.split(' ').leng
 
   <!-- Article navigation in footer -->
   <nav slot="footer-content" aria-label={language === 'es' ? 'Navegación de artículos' : 'Post navigation'}>
-    <p><a href={`/${language === 'es' ? 'es/articulos' : 'en/posts'}/`}>{language === 'es' ? 'Volver a todos los artículos' : 'Back to all posts'}</a></p>
+    <p><a href={language === 'es' ? '/articulos/' : '/en/posts/'}>{language === 'es' ? 'Volver a todos los artículos' : 'Back to all posts'}</a></p>
   </nav>
 </BaseLayout>

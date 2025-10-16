@@ -1,0 +1,36 @@
+# Redirects for Cloudflare Pages
+# Format: <source> <destination> [<status_code>]
+
+# Redirecciones de posts antiguos (slugs directos) a nueva estructura
+/aprendiendo-gatsby-con-starter-blog /articulos/aprendiendo-gatsby-con-starter-blog 301
+/django-clases-genericas /articulos/django-clases-genericas 301
+/dotfiles /articulos/dotfiles 301
+/evaluando-react-contex-redux /articulos/evaluando-react-contex-redux 301
+/homebrew-mac-os-x /articulos/homebrew-mac-os-x 301
+/instalar-macos-de-cero-y-configurar-entorno /articulos/instalar-macos-de-cero-y-configurar-entorno 301
+/integracion-continua /articulos/integracion-continua 301
+/introduciendo-serverless-python-madrid /articulos/introduciendo-serverless-python-madrid 301
+/ntp /articulos/ntp 301
+/plantilla-proyecto-python /articulos/plantilla-proyecto-python 301
+/python-generators /articulos/python-generators 301
+/que-es-serverless-baas-y-faas /articulos/que-es-serverless-baas-y-faas 301
+/tutorial-ant-buildxml /articulos/tutorial-ant-buildxml 301
+/volver-a-los-fundamentos /articulos/volver-a-los-fundamentos 301
+
+# Redirecciones de transparencias/slides a nueva estructura como posts
+/slides/microservicios-cuando-y-como /articulos/microservicios-cuando-y-como 301
+/slides/introduciendo-serverless-en-proyectos-python /articulos/introduciendo-serverless-en-proyectos-python 301
+/slides/vim-plugin-management /articulos/vim-plugin-management 301
+/slides/try-angularjs /articulos/descubriendo-angularjs-try-it 301
+/slides/hhgttwd /articulos/hitchhiker-guide-web-development-try-it 301
+/slides/django-tricks-2 /articulos/trucos-consejos-django 301
+
+# Redirecciones de sección de transparencias
+/transparencias /articulos 301
+/slides /articulos 301
+
+# Redirecciones de tags específicos
+/tags /etiquetas 301
+
+# Redirect old /es/* paths to root (for backwards compatibility)
+/es/* /:splat 301

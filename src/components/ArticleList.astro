@@ -24,8 +24,8 @@ if (limit && limit > 0) {
 
 // Set up language-specific content using i18n
 const locale = language as Locale;
-const baseUrl = language === 'es' ? '/es/articulos/' : '/en/posts/';
-const tagBaseUrl = language === 'es' ? '/es/etiquetas/' : '/en/tags/';
+const baseUrl = language === 'es' ? '/articulos/' : '/en/posts/';
+const tagBaseUrl = language === 'es' ? '/etiquetas/' : '/en/tags/';
 const readingTimeText = t(locale, 'readingTime');
 const noPostsText = t(locale, 'noArticles');
 const tagsAriaLabel = t(locale, 'articleTags');

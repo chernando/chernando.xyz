@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import { siteConfig } from '../../site.config.ts';
+import { siteConfig } from '../site.config.ts';
 
 export async function GET(context) {
   const posts = await getCollection('posts-es');
@@ -11,7 +11,7 @@ export async function GET(context) {
     .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf());
 
   const customData = [
-    `<atom:link href="${context.site}es/rss.xml" rel="self" type="application/rss+xml" />`,
+    `<atom:link href="${context.site}rss.xml" rel="self" type="application/rss+xml" />`,
     `<language>${siteConfig.rss.es.language}</language>`,
     `<lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`
   ].join('\n    ');
@@ -30,7 +30,7 @@ export async function GET(context) {
       description: post.data.description,
       content: post.body,
       author: siteConfig.author,
-      link: `/es/articulos/${post.slug}/`,
+      link: `/articulos/${post.slug}/`,
       categories: post.data.tags,
     })),
     customData,

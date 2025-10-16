@@ -1,3 +1,56 @@
 ---
-return Astro.redirect('/es/articulos/', 301);
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ArticleList from '../components/ArticleList.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/chernando-en-google-campus-madrid.jpeg';
+
+const posts = await getCollection('posts-es');
+
+const pageTitle = 'Carlos Hernando | Problema, Solución, Herramienta';
+const pageDescription = "Líder técnico con 17+ años aplicando la filosofía 'Problema, Solución, Herramienta' en entornos de startup. Head of Engineering en Invofox (YC S22) compartiendo insights sobre liderazgo técnico y equipos de ingeniería.";
 ---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  type="website"
+  lang="es"
+>
+  <figure>
+    <Image
+      src={heroImage}
+      alt="Carlos Hernando presentando en Google Campus Madrid"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </figure>
+
+  <section aria-label="Sobre Carlos Hernando">
+    <h2><span aria-hidden="true">👋</span> Hola, soy Carlos Hernando</h2>
+    <p>
+      Líder técnico con 17+ años transformando desafíos empresariales en soluciones técnicas efectivas. Actualmente Head of Engineering en <a href="https://invofox.com" rel="noopener noreferrer">Invofox</a> (YC S22) y Secretario en <a href="https://www.tetuanvalley.com" rel="noopener noreferrer">Tetuan Valley</a>, donde combino liderazgo técnico y mentoría para startups.
+    </p>
+    <p>
+      Mi filosofía: <strong>Problema, Solución, Herramienta</strong> — no al revés.
+    </p>
+    <p>
+      Comparto perspectivas sobre liderazgo técnico, construcción de equipos de ingeniería y crecimiento de startups, conectando innovación técnica con impacto empresarial.
+    </p>
+  </section>
+
+  <section aria-label="Últimos artículos">
+    <h2>Últimos Artículos</h2>
+    <ArticleList posts={posts} language="es" limit={3} showTags={false} />
+    <p><a href="/articulos/">Ver todos los artículos</a></p>
+  </section>
+
+  <section aria-label="Redes sociales">
+    <h2>Redes sociales</h2>
+    <ul>
+      <li><a href="https://linkedin.com/in/chernando" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="https://github.com/chernando" rel="noopener noreferrer">GitHub</a></li>
+      <li><a href="https://twitter.com/chernando" rel="noopener noreferrer">Twitter</a></li>
+    </ul>
+  </section>
+</BaseLayout>

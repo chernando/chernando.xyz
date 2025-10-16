@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import ArticleList from '../../../components/ArticleList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleList from '../../components/ArticleList.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts-es');
@@ -63,8 +63,8 @@ const pageDescription = `Todos los artículos etiquetados con "${displayTag}" - 
 
     <nav aria-label="Explorar más contenido">
       <ul>
-        <li><a href="/es/articulos/">Volver a todos los artículos</a></li>
-        <li><a href="/es/etiquetas/">Explorar todas las etiquetas</a></li>
+        <li><a href="/articulos/">Volver a todos los artículos</a></li>
+        <li><a href="/etiquetas/">Explorar todas las etiquetas</a></li>
       </ul>
     </nav>
   </section>

@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const posts = await getCollection('posts-es');
 
@@ -44,7 +44,7 @@ const pageDescription = 'Explora todos los temas y etiquetas de mis artículos s
       <ul>
         {sortedTags.map(([tag, count]) => (
           <li>
-            <a href={`/es/etiquetas/${tag}/`} rel="tag">
+            <a href={`/etiquetas/${tag}/`} rel="tag">
               <strong>#{tag}</strong>
               <span>({count} artículo{count === 1 ? '' : 's'})</span>
             </a>
@@ -55,7 +55,7 @@ const pageDescription = 'Explora todos los temas y etiquetas de mis artículos s
 
     <nav aria-label="Navegar atrás">
       <p>
-        <a href="/es/articulos/">← Volver a todos los artículos</a>
+        <a href="/articulos/">← Volver a todos los artículos</a>
       </p>
     </nav>
   </section>
