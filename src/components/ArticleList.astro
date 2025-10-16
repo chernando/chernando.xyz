@@ -54,7 +54,7 @@ const tagNavigationLabel = language === 'es' ? 'Navegar por etiqueta' : 'Browse 
                 })}
               </time>
               {showReadingTime && post.data.readingTime && (
-                <span aria-label={`${language === 'es' ? 'Tiempo estimado de lectura:' : 'Estimated reading time:'} ${post.data.readingTime} ${readingTimeText}`}>
+                <span>
                   • {post.data.readingTime}&nbsp;{readingTimeText}
                 </span>
               )}
@@ -66,7 +66,7 @@ const tagNavigationLabel = language === 'es' ? 'Navegar por etiqueta' : 'Browse 
               <ul>
                 {post.data.tags.map((tag: string) => (
                   <li>
-                    <a href={`${tagBaseUrl}${tag}/`} rel="tag" aria-label={`${tagNavigationLabel}: ${tag}`}>
+                    <a href={`${tagBaseUrl}${tag}/`} rel="tag">
                       #{tag}
                     </a>
                   </li>

@@ -51,7 +51,7 @@ const calculatedReadingTime = readingTime || Math.ceil(post.body.split(' ').leng
     <header>
       <h1 itemprop="headline">{title}</h1>
 
-      <div class="article-meta" role="contentinfo">
+      <div class="article-meta" role="group" aria-label={language === 'es' ? 'Metadatos del artículo' : 'Article metadata'}>
         <time
           datetime={publishDate.toISOString()}
           itemprop="datePublished"
