@@ -1,0 +1,75 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../../assets/chernando-en-google-campus-madrid.jpeg';
+
+const posts = await getCollection('posts-en');
+const sortedPosts = posts
+  .filter(post => !post.data.draft)
+  .sort((a, b) => new Date(b.data.publishDate).getTime() - new Date(a.data.publishDate).getTime());
+const latestPosts = sortedPosts.slice(0, 3);
+
+const pageTitle = 'Carlos Hernando | Problem, Solution, Tool';
+const pageDescription = "Technical leader with 17+ years applying the 'Problem, Solution, Tool' philosophy in startup environments. Head of Engineering at Invofox (YC S22) sharing insights on technical leadership and engineering teams.";
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  type="website"
+  lang="en"
+>
+  <figure>
+    <Image
+      src={heroImage}
+      alt="Carlos Hernando presenting at Google Campus Madrid"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </figure>
+
+  <section aria-label="About Carlos Hernando">
+    <h2><span aria-hidden="true">👋</span> Hello, I'm Carlos Hernando</h2>
+    <p>
+      Technical leader with 17+ years transforming business challenges into effective solutions. Currently Head of Engineering at <a href="https://invofox.com" rel="noopener noreferrer">Invofox</a> (YC S22) and Secretary at <a href="https://www.tetuanvalley.com" rel="noopener noreferrer">Tetuan Valley</a>, where I combine technical leadership and startup mentorship.
+    </p>
+    <p>
+      My philosophy: <strong>Problem, Solution, Tool</strong> —  not the other way around.
+    </p>
+    <p>
+      I share insights on technical leadership, engineering team building, and startup growth, connecting technical innovation with business impact.
+    </p>
+  </section>
+
+  <section aria-label="Latest articles">
+    <h2>Latest Articles</h2>
+    <ul>
+      {latestPosts.map((post) => (
+        <li>
+          <article>
+            <h3><a href={`/en/posts/${post.slug}/`}>{post.data.title}</a></h3>
+            <time datetime={post.data.publishDate?.toISOString()}>
+              {post.data.publishDate?.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </time>
+            {post.data.description && <p>{post.data.description}</p>}
+          </article>
+        </li>
+      ))}
+    </ul>
+    <p><a href="/en/posts/">View all articles</a></p>
+  </section>
+
+  <section aria-label="Social networks">
+    <h2>Social networks</h2>
+    <ul>
+      <li><a href="https://linkedin.com/in/chernando" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="https://github.com/chernando" rel="noopener noreferrer">GitHub</a></li>
+      <li><a href="https://twitter.com/chernando" rel="noopener noreferrer">Twitter</a></li>
+    </ul>
+  </section>
+</BaseLayout>

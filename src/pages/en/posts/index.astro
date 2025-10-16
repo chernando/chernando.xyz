@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleList from '../../../components/ArticleList.astro';
+
+const posts = await getCollection('posts-en');
+
+const pageTitle = 'Articles | Carlos Hernando';
+const pageDescription = 'Personal blog and thoughts by chernando';
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  type="website"
+  lang="en"
+>
+  <section aria-label="Blog posts">
+    <h2>Latest Posts</h2>
+    <ArticleList posts={posts} language="en" />
+  </section>
+</BaseLayout>

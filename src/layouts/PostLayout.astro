@@ -1,0 +1,146 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { siteConfig } from '../site.config.ts';
+
+export interface Props {
+  post: CollectionEntry<'posts-en'> | CollectionEntry<'posts-es'>;
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const {
+  title,
+  description,
+  publishDate,
+  lastModified,
+  tags,
+  image,
+  imageAlt,
+  imageDescription,
+  imageAuthor,
+  imageAuthorUrl,
+  imagePhotoUrl,
+  readingTime,
+  language,
+  translationKey
+} = post.data;
+
+// Calculate reading time if not provided
+const calculatedReadingTime = readingTime || Math.ceil(post.body.split(' ').length / 200);
+---
+
+<BaseLayout
+  title={`${title} | Carlos Hernando`}
+  description={description}
+  type="article"
+  publishedTime={publishDate}
+  modifiedTime={lastModified || publishDate}
+  tags={tags}
+  author={siteConfig.author}
+  image={image?.src}
+  lang={language}
+  translationKey={translationKey}
+  currentSlug={post.slug}
+>
+  <!-- Reading Progress Indicator -->
+  <ReadingProgress />
+
+  <article itemscope itemtype="https://schema.org/BlogPosting">
+    <!-- Article header -->
+    <header>
+      <h1 itemprop="headline">{title}</h1>
+
+      <div class="article-meta" role="contentinfo">
+        <time
+          datetime={publishDate.toISOString()}
+          itemprop="datePublished"
+        >
+          {publishDate.toLocaleDateString(language === 'es' ? 'es-ES' : 'en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </time>
+
+        {lastModified && lastModified.getTime() !== publishDate.getTime() && (
+          <time
+            datetime={lastModified.toISOString()}
+            itemprop="dateModified"
+          >
+            ({language === 'es' ? 'Actualizado' : 'Updated'}: {lastModified.toLocaleDateString(language === 'es' ? 'es-ES' : 'en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })})
+          </time>
+        )}
+
+        <span>
+          • {calculatedReadingTime} {language === 'es' ? 'min de lectura' : 'min read'}
+        </span>
+
+      </div>
+
+      {description && (
+        <p itemprop="description">
+          {description}
+        </p>
+      )}
+
+      {tags.length > 0 && (
+        <nav aria-label={language === 'es' ? 'Etiquetas del artículo' : 'Article tags'}>
+          <ul>
+            {tags.map((tag) => (
+              <li>
+                <a href={`/${language}/${language === 'es' ? 'etiquetas' : 'tags'}/${tag}`} itemprop="keywords">#{tag}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
+
+      {image && (
+        <figure>
+          <Image
+            src={image}
+            alt={imageDescription || imageAlt || `Featured image for ${title}`}
+            loading="eager"
+            itemprop="image"
+          />
+          {(imageAuthor || imageAlt) && (
+            <figcaption>
+              {imageAuthor && imageAuthorUrl ? (
+                <cite>
+                  <a href={imagePhotoUrl || imageAuthorUrl} rel="noopener noreferrer" target="_blank">Photo</a> by <a href={imageAuthorUrl} rel="noopener noreferrer" target="_blank">{imageAuthor}</a> on <a href="https://unsplash.com" rel="noopener noreferrer" target="_blank">Unsplash</a>
+                </cite>
+              ) : imageAlt}
+            </figcaption>
+          )}
+        </figure>
+      )}
+
+      <!-- Language switcher -->
+      <LanguageSwitcher
+        currentLang={language}
+        translationKey={translationKey}
+        currentSlug={post.slug}
+      />
+    </header>
+
+    <!-- Article content -->
+    <div itemprop="articleBody">
+      <Content />
+    </div>
+
+  </article>
+
+  <!-- Article navigation in footer -->
+  <nav slot="footer-content" aria-label={language === 'es' ? 'Navegación de artículos' : 'Post navigation'}>
+    <p><a href={`/${language === 'es' ? 'es/articulos' : 'en/posts'}/`}>{language === 'es' ? 'Volver a todos los artículos' : 'Back to all posts'}</a></p>
+  </nav>
+</BaseLayout>

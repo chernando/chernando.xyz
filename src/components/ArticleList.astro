@@ -1,0 +1,81 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { t, type Locale } from '../i18n.ts';
+
+interface Props {
+  posts: CollectionEntry<'posts-es'>[] | CollectionEntry<'posts-en'>[];
+  language: 'es' | 'en';
+  limit?: number;
+  showTags?: boolean;
+  showReadingTime?: boolean;
+}
+
+const { posts, language, limit, showTags = true, showReadingTime = true } = Astro.props;
+
+// Sort posts by publication date (newest first) and filter out drafts
+let publishedPosts = posts
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+// Apply limit if specified
+if (limit && limit > 0) {
+  publishedPosts = publishedPosts.slice(0, limit);
+}
+
+// Set up language-specific content using i18n
+const locale = language as Locale;
+const baseUrl = language === 'es' ? '/es/articulos/' : '/en/posts/';
+const tagBaseUrl = language === 'es' ? '/es/etiquetas/' : '/en/tags/';
+const readingTimeText = t(locale, 'readingTime');
+const noPostsText = t(locale, 'noArticles');
+const tagsAriaLabel = t(locale, 'articleTags');
+const tagNavigationLabel = language === 'es' ? 'Navegar por etiqueta' : 'Browse by tag';
+---
+
+{publishedPosts.length === 0 ? (
+  <p role="status" aria-live="polite">{noPostsText}</p>
+) : (
+  <ul>
+    {publishedPosts.map((post) => (
+      <li>
+        <article>
+          <header>
+            <h3>
+              <a href={`${baseUrl}${post.slug}/`}>
+                {post.data.title}
+              </a>
+            </h3>
+            <div class="article-meta" role="group" aria-label={language === 'es' ? 'Metadatos del artículo' : 'Article metadata'}>
+              <time datetime={post.data.publishDate.toISOString()}>
+                {post.data.publishDate.toLocaleDateString(language === 'es' ? 'es-ES' : 'en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              {showReadingTime && post.data.readingTime && (
+                <span aria-label={`${language === 'es' ? 'Tiempo estimado de lectura:' : 'Estimated reading time:'} ${post.data.readingTime} ${readingTimeText}`}>
+                  • {post.data.readingTime}&nbsp;{readingTimeText}
+                </span>
+              )}
+            </div>
+          </header>
+          <p>{post.data.description}</p>
+          {showTags && post.data.tags.length > 0 && (
+            <nav aria-label={tagsAriaLabel}>
+              <ul>
+                {post.data.tags.map((tag: string) => (
+                  <li>
+                    <a href={`${tagBaseUrl}${tag}/`} rel="tag" aria-label={`${tagNavigationLabel}: ${tag}`}>
+                      #{tag}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
+        </article>
+      </li>
+    ))}
+  </ul>
+)}

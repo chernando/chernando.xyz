@@ -1,0 +1,74 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export interface Props {
+  currentLang: string;
+  translationKey?: string;
+  currentSlug?: string;
+}
+
+const { currentLang, translationKey } = Astro.props;
+
+interface Translation {
+  language: 'en' | 'es';
+  slug: string;
+  title: string;
+  url: string;
+}
+
+let translations: Translation[] = [];
+
+if (translationKey) {
+  // Get all posts from both languages
+  const englishPosts = await getCollection('posts-en');
+  const spanishPosts = await getCollection('posts-es');
+
+  // Find matching posts by translationKey
+  const englishPost: CollectionEntry<'posts-en'> | undefined = englishPosts.find(post => post.data.translationKey === translationKey);
+  const spanishPost: CollectionEntry<'posts-es'> | undefined = spanishPosts.find(post => post.data.translationKey === translationKey);
+
+  if (englishPost && currentLang !== 'en') {
+    translations.push({
+      language: 'en',
+      slug: englishPost.slug,
+      title: englishPost.data.title,
+      url: `/en/posts/${englishPost.slug}/`
+    });
+  }
+
+  if (spanishPost && currentLang !== 'es') {
+    translations.push({
+      language: 'es',
+      slug: spanishPost.slug,
+      title: spanishPost.data.title,
+      url: `/es/articulos/${spanishPost.slug}/`
+    });
+  }
+}
+
+const languageNames: Record<'en' | 'es', string> = {
+  'en': 'English',
+  'es': 'Español'
+};
+---
+
+{translations.length > 0 && (
+  <nav aria-label={currentLang === 'es' ? 'Cambiar idioma' : 'Switch language'}>
+    <p>
+      <strong>{currentLang === 'es' ? 'También disponible en:' : 'Also available in:'}</strong>{' '}
+      {translations.map((translation, index) => (
+        <>
+          {index > 0 && ' • '}
+
+          <a
+            href={translation.url}
+            hreflang={translation.language}
+            lang={translation.language}
+          >
+            {languageNames[translation.language]}
+          </a>
+        </>
+      ))}
+    </p>
+  </nav>
+)}

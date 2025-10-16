@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ArticleList from '../../../components/ArticleList.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts-es');
+
+  // Get all tags from all posts
+  const allTags = posts
+    .filter(post => !post.data.draft)
+    .flatMap(post => post.data.tags);
+
+  // Create unique set of tags
+  const uniqueTags = [...new Set(allTags)];
+
+  // Generate paths for each tag
+  return uniqueTags.map(etiqueta => ({
+    params: { etiqueta },
+    props: { etiqueta }
+  }));
+}
+
+interface Props {
+  etiqueta: string;
+}
+
+const { etiqueta } = Astro.props;
+
+// Get all posts
+const allPosts = await getCollection('posts-es');
+
+// Filter posts by the specific tag
+const taggedPosts = allPosts.filter(post =>
+  !post.data.draft && post.data.tags.includes(etiqueta)
+);
+
+// Capitalize tag for display
+const displayTag = etiqueta.charAt(0).toUpperCase() + etiqueta.slice(1);
+const pageTitle = `#${displayTag} | Carlos Hernando`;
+const pageDescription = `Todos los artículos etiquetados con "${displayTag}" - conocimientos sobre desarrollo web, programación y tecnología.`;
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={pageDescription}
+  type="website"
+  lang="es"
+  tags={[etiqueta]}
+>
+  <section aria-label={`Artículos etiquetados con ${displayTag}`}>
+    <header>
+      <h2>Artículos etiquetados <mark>{displayTag}</mark></h2>
+      <p>
+        {taggedPosts.length === 1
+          ? `Se encontró 1 artículo etiquetado`
+          : `Se encontraron ${taggedPosts.length} artículos etiquetados`}
+        con <strong>#{etiqueta}</strong>
+      </p>
+    </header>
+
+    <ArticleList posts={taggedPosts} language="es" />
+
+    <nav aria-label="Explorar más contenido">
+      <ul>
+        <li><a href="/es/articulos/">Volver a todos los artículos</a></li>
+        <li><a href="/es/etiquetas/">Explorar todas las etiquetas</a></li>
+      </ul>
+    </nav>
+  </section>
+</BaseLayout>

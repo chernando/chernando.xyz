@@ -1,0 +1,4 @@
+User-Agent: *
+Allow: /
+
+Sitemap: https://chernando.xyz/sitemap-index.xml
