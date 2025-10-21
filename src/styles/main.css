@@ -388,6 +388,26 @@ pre code {
   color: inherit;
 }
 
+/* ============================================
+   SHIKI SYNTAX HIGHLIGHTING - DARK MODE FIX
+   ============================================ */
+
+/* Override Shiki's inline styles for dark mode support */
+@media (prefers-color-scheme: dark) {
+  pre.astro-code,
+  pre.astro-code span {
+    background-color: var(--shiki-dark-bg) !important;
+    color: var(--shiki-dark) !important;
+  }
+}
+
+/* Manual dark mode toggle support */
+[data-theme="dark"] pre.astro-code,
+[data-theme="dark"] pre.astro-code span {
+  background-color: var(--shiki-dark-bg) !important;
+  color: var(--shiki-dark) !important;
+}
+
 /* Blockquotes */
 blockquote {
   border-left: 4px solid var(--color-primary-500);
