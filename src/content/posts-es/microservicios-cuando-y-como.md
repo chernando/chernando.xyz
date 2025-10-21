@@ -28,7 +28,7 @@ En esta charla exploro cuándo es apropiado adoptar una arquitectura de microser
 - Evento: Club Tech de Google for Startups Madrid
 - Fecha: 10 de mayo de 2019
 
-<iframe id="talk_frame_515598" class="speakerdeck-iframe" src="//speakerdeck.com/player/d31b7fef74924fa9bb8e098690289dfc" width="710" height="399" style="aspect-ratio:710/399; border:0; padding:0; margin:0; background:transparent;" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" id="talk_frame_515598" class="speakerdeck-iframe" src="//speakerdeck.com/player/d31b7fef74924fa9bb8e098690289dfc" width="710" height="399" style="aspect-ratio:710/399; border:0; padding:0; margin:0; background:transparent;" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen"></iframe>
 
 ---
 

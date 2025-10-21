@@ -105,7 +105,7 @@ const calculatedReadingTime = readingTime || Math.ceil(post.body.split(' ').leng
           <Image
             src={image}
             alt={imageDescription || imageAlt || `Featured image for ${title}`}
-            loading="eager"
+            fetchpriority="high"
             itemprop="image"
           />
           {(imageAuthor || imageAlt) && (

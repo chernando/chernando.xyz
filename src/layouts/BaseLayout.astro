@@ -41,12 +41,12 @@ import { siteConfig } from '../site.config.ts';
 import { ClientRouter } from 'astro:transitions';
 
 // Fonts - Self-hosted via @fontsource for optimal HTTP/2 performance & privacy
-import '@fontsource/inter/400.css';
-import '@fontsource/inter/500.css';
-import '@fontsource/inter/600.css';
-import '@fontsource/inter/700.css';
-import '@fontsource/jetbrains-mono/400.css';
-import '@fontsource/jetbrains-mono/500.css';
+// Latin subset only for better performance (spanish/english audience)
+import '@fontsource/inter/latin-400.css';
+import '@fontsource/inter/latin-500.css';
+import '@fontsource/inter/latin-600.css';
+import '@fontsource/inter/latin-700.css';
+import '@fontsource/jetbrains-mono/latin-400.css';
 
 import 'modern-normalize/modern-normalize.css';
 import '../styles/main.css';
@@ -107,6 +107,10 @@ if (translationKey && currentSlug) {
     <link rel="dns-prefetch" href="https://github.com">
     <link rel="dns-prefetch" href="https://twitter.com">
     <link rel="dns-prefetch" href="https://linkedin.com">
+
+    <!-- Font preloading: @fontsource uses font-display:swap which provides good performance.
+         Manual preload would require knowing exact hashed paths after build.
+         Consider using Astro's experimental fonts API for automatic preload if needed. -->
 
     <!-- Favicon and Icons -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">

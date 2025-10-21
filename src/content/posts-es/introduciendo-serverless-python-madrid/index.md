@@ -47,7 +47,7 @@ https://youtu.be/BPJI2zApuug
 
 ## Transparencias
 
-<iframe id="talk_frame_405882" class="speakerdeck-iframe" src="//speakerdeck.com/player/9684a936bb7f4173a72f382c7f5f47f2" width="710" height="399" style="aspect-ratio:710/399; border:0; padding:0; margin:0; background:transparent;" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen"></iframe>
+<iframe loading="lazy" id="talk_frame_405882" class="speakerdeck-iframe" src="//speakerdeck.com/player/9684a936bb7f4173a72f382c7f5f47f2" width="710" height="399" style="aspect-ratio:710/399; border:0; padding:0; margin:0; background:transparent;" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen"></iframe>
 
 
 ## Referencias
