@@ -1,7 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import ReadingProgress from '../components/ReadingProgress.astro';
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { siteConfig } from '../site.config.ts';
@@ -47,9 +46,6 @@ const calculatedReadingTime = readingTime || Math.ceil(post.body.split(' ').leng
   translationKey={translationKey}
   currentSlug={post.slug}
 >
-  <!-- Reading Progress Indicator -->
-  <ReadingProgress />
-
   <article itemscope itemtype="https://schema.org/BlogPosting">
     <!-- Article header -->
     <header>
