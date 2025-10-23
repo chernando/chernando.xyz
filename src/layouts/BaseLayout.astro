@@ -38,7 +38,6 @@ const imageUrl = new URL(image, Astro.site);
 // Generate hreflang URLs for translations
 import { getCollection } from 'astro:content';
 import { siteConfig } from '../site.config.ts';
-import { ClientRouter } from 'astro:transitions';
 
 // Fonts - Self-hosted via @fontsource for optimal HTTP/2 performance & privacy
 // Latin subset only for better performance (spanish/english audience)
@@ -159,9 +158,6 @@ if (translationKey && currentSlug) {
 
     <!-- Generator -->
     <meta name="generator" content={Astro.generator}>
-
-    <!-- Client-side routing for smooth navigation -->
-    <ClientRouter />
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json" is:inline set:html={JSON.stringify({
