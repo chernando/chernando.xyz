@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ArticleList from '../components/ArticleList.astro';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import heroImage from '../assets/chernando-en-google-campus-madrid.jpeg';
 
 const posts = await getCollection('posts-es');
@@ -18,11 +18,13 @@ const pageDescription = "Líder técnico con 17+ años aplicando la filosofía '
   lang="es"
 >
   <figure>
-    <Image
+    <Picture
       src={heroImage}
       alt="Carlos Hernando presentando en Google Campus Madrid"
       loading="eager"
       fetchpriority="high"
+      layout="full-width"
+      formats={['avif', 'webp']}
     />
   </figure>
 

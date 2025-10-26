@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import heroImage from '../../assets/chernando-en-google-campus-madrid.jpeg';
 
 const posts = await getCollection('posts-en');
@@ -21,11 +21,13 @@ const pageDescription = "Technical leader with 17+ years applying the 'Problem, 
   lang="en"
 >
   <figure>
-    <Image
+    <Picture
       src={heroImage}
       alt="Carlos Hernando presenting at Google Campus Madrid"
       loading="eager"
       fetchpriority="high"
+      layout="full-width"
+      formats={['avif', 'webp']}
     />
   </figure>
 

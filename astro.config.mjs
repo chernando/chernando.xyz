@@ -70,5 +70,8 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'auto',
   },
-  prefetch: true
+  prefetch: true,
+  image: {
+    experimentalLayout: 'responsive'
+  }
 });

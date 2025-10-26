@@ -1,7 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import LanguageSwitcher from '../components/LanguageSwitcher.astro';
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import { siteConfig } from '../site.config.ts';
 
@@ -102,11 +102,13 @@ const calculatedReadingTime = readingTime || Math.ceil(post.body.split(' ').leng
 
       {image && (
         <figure>
-          <Image
+          <Picture
             src={image}
             alt={imageDescription || imageAlt || `Featured image for ${title}`}
             fetchpriority="high"
             itemprop="image"
+            layout="full-width"
+            formats={['avif', 'webp']}
           />
           {(imageAuthor || imageAlt) && (
             <figcaption>
