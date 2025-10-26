@@ -62,13 +62,13 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       themes: {
-        light: 'solarized-light',
-        dark: 'solarized-dark'
+        light: 'github-light',
+        dark: 'github-dark'
       }
     }
   },
   build: {
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
   prefetch: true,
   image: {

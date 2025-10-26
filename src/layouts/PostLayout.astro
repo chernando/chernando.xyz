@@ -106,9 +106,12 @@ const calculatedReadingTime = readingTime || Math.ceil(post.body.split(' ').leng
             src={image}
             alt={imageDescription || imageAlt || `Featured image for ${title}`}
             fetchpriority="high"
+            loading="eager"
             itemprop="image"
             layout="full-width"
             formats={['avif', 'webp']}
+            widths={[640, 750, 828, 1080, 1280]}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 75vw, 60vw"
           />
           {(imageAuthor || imageAlt) && (
             <figcaption>
