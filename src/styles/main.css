@@ -322,6 +322,8 @@ a {
   text-decoration-thickness: 0.125em;
   text-underline-offset: 0.15em;
   transition: color 0.2s ease;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 a:hover {
@@ -449,23 +451,53 @@ figcaption cite {
   font-style: normal;
 }
 
+/* Iframes - Responsive handling */
+iframe {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Preserve aspect ratio for iframes with inline styles */
+iframe[style*="aspect-ratio"] {
+  width: 100%;
+}
+
+/* General overflow protection for all replaced elements */
+img, video, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
 /* Tables */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: var(--space-6);
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
 }
 
 th, td {
   padding: var(--space-3) var(--space-4);
   text-align: left;
   border-bottom: 1px solid var(--color-border);
+  white-space: nowrap; /* Prevent cell content wrapping for better table structure */
 }
 
 th {
   font-weight: var(--weight-semibold);
   color: var(--color-text-primary);
   background-color: var(--color-surface);
+}
+
+/* Allow wrapping in table cells on very small screens */
+@media (max-width: 480px) {
+  th, td {
+    white-space: normal;
+    min-width: 120px;
+  }
 }
 
 /* ============================================
@@ -582,6 +614,8 @@ article header p[itemprop="description"] {
 /* Article body content */
 article [itemprop="articleBody"] {
   margin-top: var(--space-8);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 /* Article List Layout (for listing pages) */
