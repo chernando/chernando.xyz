@@ -380,6 +380,10 @@ pre {
   overflow-x: auto;
   margin-bottom: var(--space-6);
   border: 1px solid var(--color-border);
+
+  /* Performance optimization: lazy render off-screen code blocks */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
 }
 
 pre code {
@@ -391,10 +395,10 @@ pre code {
 }
 
 /* ============================================
-   SHIKI SYNTAX HIGHLIGHTING - DARK MODE FIX
+   SHIKI SYNTAX HIGHLIGHTING - DARK MODE
    ============================================ */
 
-/* Override Shiki's inline styles for dark mode support */
+/* Activate Shiki dark theme colors in dark mode */
 @media (prefers-color-scheme: dark) {
   pre.astro-code,
   pre.astro-code span {

@@ -42,7 +42,6 @@ import { siteConfig } from '../site.config.ts';
 // Fonts - Self-hosted via @fontsource for optimal HTTP/2 performance & privacy
 // Latin subset only for better performance (spanish/english audience)
 import '@fontsource/inter/latin-400.css';
-import '@fontsource/inter/latin-500.css';
 import '@fontsource/inter/latin-600.css';
 import '@fontsource/inter/latin-700.css';
 import '@fontsource/jetbrains-mono/latin-400.css';
@@ -86,6 +85,9 @@ if (translationKey && currentSlug) {
     <meta name="author" content={author}>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index, follow">
+
+    <!-- Font Preloading - Note: Paths are resolved during build by Vite -->
+    <!-- Critical fonts preloaded via @font-face with font-display: swap in CSS -->
 
     <!-- Theme color for mobile browsers -->
     <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">

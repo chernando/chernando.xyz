@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import AstroPWA from '@vite-pwa/astro';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://chernando.xyz',
@@ -62,8 +63,8 @@ export default defineConfig({
   markdown: {
     shikiConfig: {
       themes: {
-        light: 'github-light',
-        dark: 'github-dark'
+        light: 'github-light-high-contrast',
+        dark: 'github-dark-high-contrast'
       }
     }
   },
