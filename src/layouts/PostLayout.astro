@@ -111,7 +111,7 @@ const calculatedReadingTime = readingTime || Math.ceil(post.body.split(' ').leng
             layout="full-width"
             formats={['avif', 'webp']}
             widths={[400, 600, 800, 1200, 1600]}
-            sizes="(max-width: 480px) 100vw, (max-width: 768px) 90vw, (max-width: 1024px) 720px, 720px"
+            sizes="(max-width: 480px) calc(100vw - 2rem), (max-width: 768px) calc(90vw - 3rem), 656px"
           />
           {(imageAuthor || imageAlt) && (
             <figcaption>
